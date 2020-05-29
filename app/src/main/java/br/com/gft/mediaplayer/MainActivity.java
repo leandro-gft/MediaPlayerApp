@@ -78,4 +78,15 @@ public class MainActivity extends AppCompatActivity {
             mediaPlayer = MediaPlayer.create(getApplicationContext(),R.raw.chromatica);
         }
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mediaPlayer !=null && mediaPlayer.isPlaying()){
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer=null;
+        }
+
+    }
 }
